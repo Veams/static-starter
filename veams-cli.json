@@ -1,0 +1,30 @@
+{
+  "projectType": "static-page-app",
+  "entries": {
+    "style": "src/app.scss"
+  },
+  "insertpoints": [
+    "src/core/layouts",
+    "src/pages",
+    "src/features",
+    "src/app.events.ts",
+    "src/app.ts"
+  ],
+  "paths": {
+    "app": "src",
+    "dest": "dist",
+    "assets": "src/assets",
+    "env": "environments",
+    "component": "src/shared/components",
+    "config": "tasks",
+    "docs": "src/docs",
+    "package": "src/shared/components",
+    "src": "src",
+    "utility": "src/shared/utilities"
+  },
+  "ports": {
+    "app": 3000,
+    "server": 2999
+  },
+  "startPath": "index.html"
+}

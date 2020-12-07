@@ -1,0 +1,55 @@
+/* stylelint-disable */
+/* ===================================================
+Generic Webfont Generation
+=================================================== */
+
+/* ---------------------------------------------------
+Global Font
+--------------------------------------------------- */
+
+@font-face {
+	font-family: "{{fontName}}";
+	src: {{{src}}};
+}
+
+@if not variable-exists('webfont-icons') {
+	$webfont-icons: () !global;
+}
+
+/*
+Font Map
+----------------------- */
+$webfont-icons: (
+{{#each codepoints}}
+	'{{@key}}': ('{{../fontName}}' '{{this}}'),
+{{/each}}
+);
+
+/* ---------------------------------------------------
+Font Mixin
+--------------------------------------------------- */
+@mixin webfont-icon($name) {
+	$icon: map-get($webfont-icons, $name);
+	$character-code: "\"\\" + nth($icon, 2) + "\"";
+
+	line-height: 1;
+
+	&::before {
+		font-family: nth($icon, 1) !important;
+		font-style: normal;
+		font-weight: normal !important;
+		vertical-align: middle;
+		content: #{$character-code};
+	}
+}
+
+/* ---------------------------------------------------
+Font Icon Classes
+--------------------------------------------------- */
+{{#each codepoints}}
+.is-font-icon-{{@key}} {
+	@include webfont-icon({{@key}});
+}
+
+{{/each}}
+/* stylelint-enable */

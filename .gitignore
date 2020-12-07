@@ -1,0 +1,9 @@
+node_modules
+.idea
+*.iml
+docs
+.DS_Store
+stats.html
+*.js.map
+*.test.js
+dist
